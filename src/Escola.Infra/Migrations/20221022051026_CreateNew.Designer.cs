@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Escola.Infra.Migrations
 {
     [DbContext(typeof(EscolaDBContexto))]
-    [Migration("20220830010030_Create")]
-    partial class Create
+    [Migration("20221022051026_CreateNew")]
+    partial class CreateNew
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,32 +33,29 @@ namespace Escola.Infra.Migrations
 
                     b.Property<DateTime>("DataNascimento")
                         .HasColumnType("DATE")
-                        .HasColumnName("DATA_NASCIMENTO");
+                        .HasColumnName("DataNascimento");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("VARCHAR(200)")
-                        .HasColumnName("EMAIL");
+                        .HasColumnName("Email");
 
                     b.Property<int>("Matricula")
                         .HasColumnType("int")
                         .HasColumnName("Matricula");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("VARCHAR(80)")
-                        .HasColumnName("NOME");
+                        .HasColumnName("Nome");
 
                     b.Property<string>("Sobrenome")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("VARCHAR(150)")
-                        .HasColumnName("SOBRENOME");
+                        .HasMaxLength(80)
+                        .HasColumnType("VARCHAR(80)")
+                        .HasColumnName("Sobrenome");
 
                     b.HasKey("Id")
-                        .HasName("PK_AlunoID");
+                        .HasName("PK_AlunoId");
 
                     b.ToTable("ALUNO", (string)null);
                 });

@@ -1,54 +1,52 @@
-using System.Security.Cryptography.X509Certificates;
+﻿using Escola.Domain.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using Escola.Domain.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Escola.Infra.DataBase.Mappings
 {
-    public class AlunoMap : IEntityTypeConfiguration<Aluno>
+    internal class AlunoMap : IEntityTypeConfiguration<Aluno>
     {
         public void Configure(EntityTypeBuilder<Aluno> builder)
         {
             builder.ToTable("ALUNO");
-
             builder.HasKey(x => x.Id)
-                    .HasName("PK_AlunoID");
+                .HasName("PK_AlunoId");
 
             builder.Property(x => x.Id)
-                    .HasColumnName("ID")
-                    .HasColumnType("uniqueidentifier");
+                .HasColumnName("ID")
+                .HasColumnType("uniqueidentifier");
 
             builder.Property(x => x.Email)
-                    .HasColumnName("EMAIL")
-                    .HasColumnType("VARCHAR")
-                    .HasMaxLength(200);
-
+                .HasColumnName("Email")
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(200); 
+            
             builder.Property(x => x.Nome)
-                    .HasColumnName("NOME")
-                    .HasColumnType("VARCHAR")
-                    .HasMaxLength(80);
+                .HasColumnName("Nome")
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(80);
 
             builder.Property(x => x.Sobrenome)
-                    .HasColumnName("SOBRENOME")
-                    .HasColumnType("VARCHAR")
-                    .HasMaxLength(150);
+                .HasColumnName("Sobrenome")
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(80);
+
 
             builder.Property(x => x.DataNascimento)
-                    .HasColumnName("DATA_NASCIMENTO")
-                    .HasColumnType("DATE");
-            
+                .HasColumnName("DataNascimento")
+                .HasColumnType("DATE");
 
-             builder.Property(x => x.Matricula)
-                    .HasColumnName("Matricula")
-                    .HasColumnType("int"); 
+            builder.Property(x => x.Matricula)
+            .HasColumnName("Matricula")
+            .HasColumnType("int");
 
-             builder.HasIndex(x => x.Matricula).IsUnique();
 
-            
+
         }
     }
 }

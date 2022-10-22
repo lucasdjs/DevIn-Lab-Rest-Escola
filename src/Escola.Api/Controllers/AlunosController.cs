@@ -13,20 +13,15 @@ namespace Escola.Api.Controllers
     [Route("api/[controller]")]
     public class AlunosController : ControllerBase
     {
-        private readonly IAlunoServico _alunoServico;
-        public AlunosController(IAlunoServico alunoServico)
+
+        [HttpGet("ObterTodos")]
+
+        public IActionResult ObterTodos()
         {
-            _alunoServico = alunoServico;
+
+            return Ok("Teste");
         }
-        [HttpPost]
-        public IActionResult Inserir (AlunoDTO aluno){
-            try{
-                _alunoServico.Inserir(aluno);
-            }
-            catch{
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
-            return Ok();
-        }
+
     }
+         
 }

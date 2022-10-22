@@ -6,19 +6,15 @@ using Escola.Infra.DataBase;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<EscolaDBContexto>();
-
-builder.Services.AddScoped<IAlunoRepositorio,AlunoRepositorio>();
-builder.Services.AddScoped<IAlunoServico,AlunoServico>();
-
-
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 app.MapControllers();
 
 if (app.Environment.IsDevelopment())
+
 {
     app.UseSwagger();
     app.UseSwaggerUI();
@@ -29,4 +25,16 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+
+
+//builder.Services.AddDbContext<EscolaDBContexto>();
+//builder.Services.AddScoped<IAlunoRepositorio, AlunoRepositorio>();
+//builder.Services.AddScoped<IAlunoServico, AlunoServico>();
+
+
 app.Run();
+
+
+
+
+

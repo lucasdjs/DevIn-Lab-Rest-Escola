@@ -11,7 +11,7 @@ namespace Escola.Api.Controllers
     [Route("api/[controller]")]
     public class HealthController : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("Helth")]
         public IActionResult Health (){
             return Ok("Health");
         }
